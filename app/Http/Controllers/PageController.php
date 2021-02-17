@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function welcome(){
-        return "Selamat Datang";
+    public function index(){
+        echo "Selamat Datang";
     }
 
     public function about(){
@@ -16,6 +16,12 @@ class PageController extends Controller
         echo "Nama: Vega Anggaresta";
     }
     public function articles($id){
-        return "Halaman Artikel dengan ID->$id";
+        return "Halaman Artikel dengan ID ke->$id";
+    }
+    public function news($id){
+        return '<a href="https://www.educastudio.com/news">News</a>';
+    }
+    public function educa($id){
+        return '<a href="https://www.educastudio.com/news/'.$id.'">https://www.educastudio.com/news/'.$id.'</a>';
     }
 }
