@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
@@ -64,7 +65,7 @@ Route::get('/about', [AboutController::class,'about']);
 Route::get('/articles/{id}', [ArticleController::class,'articles']);
 */
 
-/* ----- Praktikum 3 -----
+/* ----- Praktikum 3 ----- */
 //No 1
 Route::get('/home',[WelcomeController::class,'home']);
 
@@ -74,23 +75,10 @@ Route::prefix('category')->group(function () {
 });
 
 Route::prefix('category')->group(function () {
-    Route::get('/', function () {
-        echo '<a href="https://www.educastudio.com/category/marbel-edu-games">marbel-edu-games</a>';
-        echo '<br>';
-        echo '<a href="https://www.educastudio.com/category/marbel-and-friends-kids-games">marbel-and-friends-kids-games</a>';
-        echo '<br>';
-        echo '<a href="https://www.educastudio.com/category/riri-story-books">riri-story-books</a>';
-        echo '<br>';
-        echo '<a href="https://www.educastudio.com/category/kolak-kids-songs">kolak-kids-songs</a>';
-    });
-   });
-*/
-/* No 3
-Route::prefix('program')->group(function () {
-    Route::get('/{id?}', [ProgramController::class,'program']);
+    Route::get('/', [ProductController::class,'products']);
 });
-Route::get('/news/{id}', [PageController::class,'news']);
-*/
+
+/* No 3
 Route::get('/news/{id?}', function ($id = null) {
     if ($id){
         echo '<a href=https://www.educastudio.com/news/'.$id.'>'.$id.'</a>';
@@ -99,7 +87,16 @@ Route::get('/news/{id?}', function ($id = null) {
     }
    }
 );
+
 /* No 4 */
 Route::prefix('program')->group(function () {
     Route::get('/{id?}', [ProgramController::class,'program']);
 });
+
+/* No 5 */
+Route::get('/about-us', function () {
+    return '<a href=https://www.educastudio.com/about-us>https://www.educastudio.com/about-us</a>';
+   });
+
+/* No 6 */
+Route::resource('contact-us', ContactController::class);
